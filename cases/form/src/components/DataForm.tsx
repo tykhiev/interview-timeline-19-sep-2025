@@ -17,7 +17,6 @@ export const DataForm = ({ mode, initValues = {}, onSubmit, onCancel }: DataForm
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // For delete mode, use initValues directly since inputs are disabled
     if (mode === 'delete') {
       if (initValues.id !== undefined) {
         await onSubmit({ id: initValues.id, name: initValues.name || '', email: initValues.email || '' })
@@ -25,7 +24,6 @@ export const DataForm = ({ mode, initValues = {}, onSubmit, onCancel }: DataForm
       return
     }
 
-    // For other modes, get data from form
     const formData = new FormData(e.currentTarget)
     const name = formData.get('name')?.toString()
     const email = formData.get('email')?.toString()
@@ -37,7 +35,7 @@ export const DataForm = ({ mode, initValues = {}, onSubmit, onCancel }: DataForm
   }
 
   const handleReset = () => {
-    setFormKey((prev) => prev + 1) // Force form re-render to reset values
+    setFormKey((prev) => prev + 1)
   }
 
   const isDisabled = mode === 'delete' || mode === 'view'

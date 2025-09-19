@@ -99,8 +99,6 @@ export default function Page() {
     setModalOpen(true)
   }
 
-  console.log(modalMode, modalInitValues)
-
   return (
     <main>
       <FlexBox flexDirection='column'>
@@ -146,7 +144,6 @@ export default function Page() {
           mode={modalMode}
           initValues={modalInitValues}
           onSubmit={async (data) => {
-            console.log(modalMode, data)
             if (modalMode === 'create') {
               if (isInsertableUser(data)) {
                 await createUser(data)
