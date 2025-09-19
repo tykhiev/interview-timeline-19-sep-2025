@@ -143,6 +143,7 @@ export default function Page() {
         <UserForm
           mode={modalMode}
           initValues={modalInitValues}
+          userRole={me.role}
           onSubmit={async (data) => {
             if (modalMode === 'create') {
               if (isInsertableUser(data)) {
